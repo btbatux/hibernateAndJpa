@@ -12,5 +12,7 @@ public interface ICityDal {
 
     void delete(City city);
 
+    City getById(int id);
+
 
 }

@@ -9,15 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class CityManager implements ICityService{
+public class CityManager implements ICityService {
     private ICityDal iCityDal;
 
 
-    @Autowired //Buraya uygun olan nesneyi enjete et.
+    @Autowired //Buraya uygun olan nesneyi enjekte et.
     public CityManager(ICityDal iCityDal) {
         this.iCityDal = iCityDal;
     }
-
 
 
     @Override
@@ -27,26 +26,32 @@ public class CityManager implements ICityService{
     }
 
 
-
     @Override
     @Transactional
     public void add(City city) {
-
+        //İş kuralları
+        this.iCityDal.add(city);
     }
-
 
 
     @Override
     @Transactional
     public void update(City city) {
-
+        this.iCityDal.update(city);
     }
 
 
     @Override
     @Transactional
     public void delete(City city) {
+        this.iCityDal.delete(city);
+    }
 
+    @Override
+    @Transactional
+    public City getById(int id) {
+
+        return iCityDal.getById(id);
     }
 
 
